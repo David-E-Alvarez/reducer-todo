@@ -1,11 +1,11 @@
 import React, { useState, useReducer } from 'react';
-import { todoReducer, initialState } from '../reducers/todoReducer';
 
-const Todo = () => {
-    const [state, dispatch] = useReducer(todoReducer, initialState);
+
+const Todo = (props) => {
+    console.log("props in Todo.js", props)
     return(
         <div>
-            <h1>Todo.js file</h1>
+            <h1>{props.task}</h1>
         </div>
     )
 }

@@ -17,6 +17,6 @@ export const initialState = [
   ];
 
   export const todoReducer = (state, action) => {
-      console.log(action)
+      console.log("action: ", action)
       return state;
   }
