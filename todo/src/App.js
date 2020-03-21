@@ -1,18 +1,17 @@
-import React , { useState, useReducer } from 'react';
-import { todoReducer, initialState } from '../src/reducers/todoReducer';
+import React, { useReducer } from 'react';
 import './App.css';
+import TodoForm from "./components/TodoForm";
+import { todoReducer, initialState } from './reducers/todoReducer';
 import TodoList from './components/TodoList';
-import Todo from './components/Todo';
 
 
 function App() {
   const [state, dispatch] = useReducer(todoReducer, initialState);
-  console.log("initialState in App.js: ", initialState);
   return (
     <div className="App">
-     <h1>Todos!</h1>
-     <TodoList tasksArray={initialState}/>
-     
+     <h1>Todos!</h1> 
+     <TodoList state={state} dispatch={dispatch}/>    
+     <TodoForm dispatch={dispatch}/>   
     </div>
   );
 }

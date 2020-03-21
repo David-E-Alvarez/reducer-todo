@@ -16,7 +16,30 @@ export const initialState = [
     }
   ];
 
-  export const todoReducer = (state, action) => {
+  export const todoReducer = (state = initialState, action) => {
       console.log("action: ", action)
-      return state;
+      switch(action.type){
+        case 'ADD_TASK':
+          return[
+            ...state,{
+              task: action.payload,
+              id: new Date(),
+              completed: false
+            }            
+          ]
+        case 'TOGGLE':
+          return state.map(taskObj => {
+            if(taskObj.id === action.payload){
+              return {...taskObj, completed: !taskObj.completed}
+            }else{
+              return taskObj;
+            }
+          })
+          case 'CLEAR_TASK':
+            return state.filter(taskObj => {
+              return !taskObj.completed;
+            })
+        default: 
+          return state;
+      }
   }
